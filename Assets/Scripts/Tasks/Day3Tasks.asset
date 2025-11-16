@@ -18,3 +18,17 @@ MonoBehaviour:
   - You're a fake. Stop pretending.
   - By taking care of yourself, you're taking care of others. Don't take up too much
     space.
+  correctActions:
+  - taskName: Hm. Not that approachable.
+    objectName: Inter_Door
+    objectState: 2
+  - taskName: He has needs, don't you know? Why not try something new?
+    objectName: Inter_Bed
+    objectState: 2
+  - taskName: You're a fake. Stop pretending.
+    objectName: Inter_Laptop
+    objectState: 1
+  - taskName: By taking care of yourself, you're taking care of others. Don't take
+      up too much space.
+    objectName: Inter_Fridge
+    objectState: 2

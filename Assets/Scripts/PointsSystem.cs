@@ -18,6 +18,14 @@ public class PointsSystem : MonoBehaviour
         public ObjectState ObjectState;
     }
 
+    [System.Serializable]
+    public struct CorrectAction
+    {
+        public string taskName;
+        public string objectName;
+        public ObjectState objectState;
+    }
+
     public struct DayHistory // List of Days
     {
         public List<ActionStruct> Day; // List of Actions
@@ -33,9 +41,6 @@ public class PointsSystem : MonoBehaviour
     [Header("Tasks")]
     [SerializeField] private DayTasks[] dayTasks;
     public List<string> availableTasks => GetAvailableTasks();
-
-    [Header("Judgement")]
-    [SerializeField] private JudgementResult[] judgementResults;
 
     private List<string> GetAvailableTasks()
     {
@@ -101,47 +106,40 @@ public class PointsSystem : MonoBehaviour
 
     public string GetJudgementText()
     {
-        if (judgementResults == null || judgementResults.Length == 0) return "No judgement available.";
-
-        foreach (JudgementResult result in judgementResults)
+        if (dayTasks == null || currentDay >= dayTasks.Length || dayTasks[currentDay] == null)
         {
-            if (IsJudgementSatisfied(result))
-            {
-                return result.partnerText;
-            }
+            return "No tasks available.";
         }
-        return "Default judgement text."; // Or something
-    }
-
-    private bool IsJudgementSatisfied(JudgementResult result)
-    {
-        // Check if all necessary actions are in the day's history
-        var actions = new (string obj, string task, ObjectState state)[]
+        var correctActions = dayTasks[currentDay].correctActions;
+        int count = 0;
+        foreach (var correct in correctActions)
         {
-            (result.objectName_1, result.taskName_1, result.objectState_1),
-            (result.objectName_2, result.taskName_2, result.objectState_2),
-            (result.objectName_3, result.taskName_3, result.objectState_3),
-            (result.objectName_4, result.taskName_4, result.objectState_4),
-            (result.objectName_5, result.taskName_5, result.objectState_5)
-        };
-
-        foreach (var (obj, task, state) in actions)
-        {
-            if (!string.IsNullOrEmpty(obj))
+            bool found = false;
+            foreach (ActionStruct action in stateHistory[currentDay].Day)
             {
-                bool found = false;
-                foreach (ActionStruct action in stateHistory[currentDay].Day)
+                if (action.ObjectName == correct.objectName && action.TaskName == correct.taskName && action.ObjectState == correct.objectState)
                 {
-                    if (action.ObjectName == obj && action.TaskName == task && action.ObjectState == state)
-                    {
-                        found = true;
-                        break;
-                    }
+                    found = true;
+                    break;
                 }
-                if (!found) return false;
             }
+            if (found) count++;
         }
-        return true;
+        int total = correctActions.Count;
+        string message = $"{count} out of {total} tasks done correctly.\n";
+        if (count <= 1)
+        {
+            message += "You disappoint me, darling.";
+        }
+        else if (count == 2)
+        {
+            message += "Well… You can do better, right?";
+        }
+        else
+        {
+            message += "Thank you. I love you.";
+        }
+        return message;
     }
 
     public void ResetInteractables()

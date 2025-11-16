@@ -613,6 +613,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b90f8245829ac74409ef5cd273fea959, type: 3}
   m_PrefabInstance: {fileID: 275814485}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &351097510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 595740069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &376782836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -767,6 +772,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1196571352}
   m_SourcePrefab: {fileID: 100100000, guid: f4dc7bc8e65d73f4898c7b4256fd7fb0, type: 3}
+--- !u!1 &447241369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 5273717071652498647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &473001802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1213,6 +1223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &636621776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 1008707116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659681594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,7 +1279,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ced6b8a787b7a4be5aa8b7afcad50e51, type: 2}
   - {fileID: 11400000, guid: a017672e450884a53814d718b49e39a3, type: 2}
   - {fileID: 11400000, guid: 84258c010f2cc414ebf57a9af8902f6d, type: 2}
-  interactables: []
+  interactables:
+  - {fileID: 447241369}
+  - {fileID: 1804842028}
+  - {fileID: 636621776}
+  - {fileID: 351097510}
+  - {fileID: 1664759945}
+  - {fileID: 2038456030}
+  - {fileID: 1813689777}
   judgementCanvas: {fileID: 93095166}
   dayScore: 0
   totalScore: 0
@@ -3146,6 +3168,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: f4dc7bc8e65d73f4898c7b4256fd7fb0, type: 3}
+--- !u!1 &1664759945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 1435463887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1709080486 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2684066422141289436, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
@@ -3504,6 +3531,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1804842028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 1983217196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1813689777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 1884307401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1824048245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4211,6 +4248,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.2726712, y: 40, z: 28.608458}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2038456030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5795229463341298975, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+  m_PrefabInstance: {fileID: 1487522638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134056964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,9 +4397,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 659930332233294907, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1355551346860884378, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990175047354001740, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122543890901251877, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122543890901251877, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 2684066422141289436, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: dayText
@@ -4371,6 +4429,10 @@ PrefabInstance:
       propertyPath: taskMenuScript
       value: 
       objectReference: {fileID: 1275285869}
+    - target: {fileID: 3067296101801639926, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3479977476624202279, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4411,6 +4473,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6013952139877108089, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6310131803128150240, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: uIManager
       value: 
@@ -4419,11 +4485,23 @@ PrefabInstance:
       propertyPath: pointsSystem
       value: 
       objectReference: {fileID: 659681596}
+    - target: {fileID: 7592364991973020914, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8404074601210104834, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: pointsSystem
       value: 
       objectReference: {fileID: 659681596}
     - target: {fileID: 8594388002035949641, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769277757556812356, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769277757556812356, guid: 9584e14af15073b4eb36b5f2fae22986, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

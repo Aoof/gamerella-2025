@@ -16,3 +16,13 @@ MonoBehaviour:
   - Life admin isn't that hard and shouldn't take up much time.
   - Stay in shape!
   - What a nice, romantic day. He'll want you. Wouldn't you want him back?
+  correctActions:
+  - taskName: Life admin isn't that hard and shouldn't take up much time.
+    objectName: Inter_Laptop
+    objectState: 2
+  - taskName: Stay in shape!
+    objectName: Inter_Fridge
+    objectState: 2
+  - taskName: What a nice, romantic day. He'll want you. Wouldn't you want him back?
+    objectName: Inter_Bed
+    objectState: 2

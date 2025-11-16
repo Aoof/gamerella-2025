@@ -17,3 +17,14 @@ MonoBehaviour:
   - Stop this. Don't advertise yourself.
   - You are too closed off, huddled in that little space you've built for yourself.
     Isn't this a shared house?
+  correctActions:
+  - taskName: He has needs. So, give in. Let go.
+    objectName: Inter_Bed
+    objectState: 1
+  - taskName: Stop this. Don't advertise yourself.
+    objectName: Inter_Heels
+    objectState: 1
+  - taskName: You are too closed off, huddled in that little space you've built for
+      yourself. Isn't this a shared house?
+    objectName: Inter_Wall
+    objectState: 1

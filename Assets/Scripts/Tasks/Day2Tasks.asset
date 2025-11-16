@@ -17,3 +17,18 @@ MonoBehaviour:
   - What a nice, romantic day. You know what that means. Don't withhold it.
   - They are a jealous bunch. They want you to end up alone. Stop listening to them.
   - Maybe throw them out, clear out the space for something more appropriate?
+  correctActions:
+  - taskName: Make yourself more approachable.
+    objectName: Inter_Door
+    objectState: 2
+  - taskName: What a nice, romantic day. You know what that means. Don't withhold
+      it.
+    objectName: Inter_Bed
+    objectState: 2
+  - taskName: They are a jealous bunch. They want you to end up alone. Stop listening
+      to them.
+    objectName: Inter_Photo
+    objectState: 1
+  - taskName: Maybe throw them out, clear out the space for something more appropriate?
+    objectName: Inter_Heels
+    objectState: 1

@@ -110,7 +110,15 @@ public class UIManager : MonoBehaviour
     public void ShowJudgement()
     {
         HideAll();
-        if (judgement != null) judgement.SetActive(true);
+        if (judgement != null)
+        {
+            judgement.SetActive(true);
+            Debug.Log("Judgement UI shown, unlocking mouse");
+        }
+        else
+        {
+            Debug.LogError("Judgement UI not assigned!");
+        }
         isInUI = true;
         UnlockMouse();
     }
@@ -136,6 +144,7 @@ public class UIManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Debug.Log("Mouse unlocked: lockState = " + Cursor.lockState + ", visible = " + Cursor.visible);
         if (interactAction != null) interactAction.Disable();
         if (moveAction != null) moveAction.Disable();
         if (lookAction != null) lookAction.Disable();
