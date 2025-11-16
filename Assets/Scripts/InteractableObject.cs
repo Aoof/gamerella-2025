@@ -87,6 +87,7 @@ public class InteractableObject : MonoBehaviour
 
     public void DestroyVariant()
     {
+        currentVariant = destroyedVariant;
         UpdateVariants();
     }
 }

@@ -22,9 +22,12 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject dialoguePanel => buttonChange?.transform.parent.gameObject;
 
+    float maxButtonWidth = 200f;
+
     PlayerUI playerUi;
     void Start()
     {
+        maxButtonWidth = buttonChange.GetComponent<RectTransform>().sizeDelta.x;
         buttonChange.GetComponent<Button>().onClick.AddListener(OnChangeClicked);
         buttonDestroy.GetComponent<Button>().onClick.AddListener(OnDestroyClicked);
         buttonNothing.GetComponent<Button>().onClick.AddListener(OnNothingClicked);
@@ -40,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     {
         UIManager ui = FindFirstObjectByType<UIManager>();
         ui.ShowDialogue();
+        Cursor.lockState = CursorLockMode.None;
         DialogueOptions options = interactableObject.GetCurrentOptions();
         if (options != null)
         {
@@ -47,6 +51,24 @@ public class DialogueManager : MonoBehaviour
             buttonDestroy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = options.destroyString;
         }
         buttonNothing.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textNothing;
+
+        // Resize buttons to fit text with wrapping
+        ResizeButton(buttonChange);
+        ResizeButton(buttonDestroy);
+    }
+
+    private void ResizeButton(GameObject button)
+    {
+        var textComp = button.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        if (textComp != null)
+        {
+            var textRect = textComp.GetComponent<RectTransform>();
+            textRect.sizeDelta = new Vector2(maxButtonWidth, textRect.sizeDelta.y);
+            textComp.textWrappingMode = TMPro.TextWrappingModes.Normal;
+            textComp.ForceMeshUpdate();
+            var buttonRect = button.GetComponent<RectTransform>();
+            buttonRect.sizeDelta = new Vector2(buttonRect.sizeDelta.x, textComp.preferredHeight);
+        }
     }
 
 
@@ -54,6 +76,7 @@ public class DialogueManager : MonoBehaviour
     {
         UIManager ui = FindFirstObjectByType<UIManager>();
         ui.HideAll();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OnChangeClicked()
