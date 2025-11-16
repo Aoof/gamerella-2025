@@ -9,10 +9,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject playerUi;
     [SerializeField] private GameObject taskMenu;
     [SerializeField] private GameObject dialogue;
+    [SerializeField] private GameObject judgement;
 
     private Canvas playerCanvas;
     private Canvas taskCanvas;
     private Canvas dialogueCanvas;
+    private Canvas judgementCanvas;
 
     public bool isInUI { get; private set; }
 
@@ -32,6 +34,7 @@ public class UIManager : MonoBehaviour
         // Find UI references if not assigned
         if (taskMenu == null) taskMenu = FindFirstObjectByType<TaskMenu>()?.gameObject;
         if (dialogue == null) dialogue = FindFirstObjectByType<DialogueManager>()?.dialoguePanel;
+        if (judgement == null) judgement = FindFirstObjectByType<JudgementPanel>()?.gameObject;
         // Get canvases
         playerCanvas = playerUi?.GetComponent<Canvas>();
         taskCanvas = taskMenu?.GetComponent<Canvas>();

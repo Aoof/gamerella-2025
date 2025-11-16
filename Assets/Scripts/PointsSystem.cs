@@ -58,4 +58,13 @@ public class PointsSystem : MonoBehaviour
             currentActions = 0;
         }
     }
+
+    public void ResetInteractables()
+    {
+        InteractableObject[] interactables = FindObjectsByType<InteractableObject>(FindObjectsSortMode.None);
+        foreach (InteractableObject io in interactables)
+        {
+            io.ResetState();
+        }
+    }
 }
