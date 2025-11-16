@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -27,8 +28,14 @@ public class InteractableObject : MonoBehaviour
             newAction.TaskName = dialogueManager.dialogueTask;
             pointsSystem.stateHistory[pointsSystem.currentDay].Day.Add(newAction);
             currentState = value;
+            
+            if (value == PointsSystem.ObjectState.Changed)
+            {
+
+            }
             pointsSystem.ActionPerformed();
         }
+        get { return currentState; }
     }
 
     void Awake()
@@ -69,6 +76,10 @@ public class InteractableObject : MonoBehaviour
         if (index >= 0 && index < changedVariants.Length - 1)
         {
             currentVariant = changedVariants[index + 1];
+            UpdateVariants();
+        } else if (currentState == PointsSystem.ObjectState.Unchanged)
+        {
+            currentVariant = changedVariants[0];
             UpdateVariants();
         }
         // Else, cannot change further

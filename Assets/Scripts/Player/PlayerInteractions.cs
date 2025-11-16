@@ -17,10 +17,12 @@ public class PlayerInteractions : MonoBehaviour
 
     void OnEnable()
     {
+        interactAction.Enable();
     }
 
     void OnDisable()
     {
+        interactAction.Disable();
     }
 
     void OnTriggerEnter(Collider other)
@@ -60,7 +62,7 @@ public class PlayerInteractions : MonoBehaviour
 
         if (interactAction.WasPressedThisFrame() && interactAction.IsPressed())
         {
-            if (latestInteractable != null)
+            if (latestInteractable != null && latestInteractable.GetComponent<InteractableObject>().isInteractable)
             {
                 // Show task menu first
                 TaskMenu tm = FindFirstObjectByType<TaskMenu>();

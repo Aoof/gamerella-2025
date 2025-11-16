@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     Vector2 rotation;
 
     private InputAction lookAction;
+    public float smoothSpeed = 10f;
 
     public void Start()
     {
@@ -32,6 +33,6 @@ public class CameraController : MonoBehaviour
 
         rotation.y = Mathf.Clamp(rotation.y, -90f, 90f);
         orientation.rotation = Quaternion.Euler(rotation.y, rotation.x, 0f);
-        transform.rotation = orientation.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, orientation.rotation, smoothSpeed * Time.deltaTime);
     }
 }
