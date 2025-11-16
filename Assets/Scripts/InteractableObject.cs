@@ -17,7 +17,7 @@ public class InteractableObject : MonoBehaviour
             PointsSystem.ActionStruct newAction = new PointsSystem.ActionStruct();
             newAction.ObjectName = gameObject.name;
             newAction.ObjectState = value;
-            newAction.TaskName = "";
+            newAction.TaskName = dialogueManager.dialogueTask;
             pointsSystem.stateHistory[pointsSystem.stateHistory.Count].Day.Add(newAction);
             currentState = value;
         }
