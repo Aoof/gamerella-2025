@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e38fafd3ff24dc4b369c63d9192500, type: 3}
   m_Name: Option_BaseFrame
   m_EditorClassIdentifier: Assembly-CSharp::DialogueOptions
-  changeString: 
-  destroyString: 
+  changeString: Change String
+  destroyString: Destroy String

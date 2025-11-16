@@ -21,11 +21,18 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject buttonNothing;
 
     public GameObject dialoguePanel => buttonChange?.transform.parent.gameObject;
+
+    PlayerUI playerUi;
     void Start()
     {
         buttonChange.GetComponent<Button>().onClick.AddListener(OnChangeClicked);
         buttonDestroy.GetComponent<Button>().onClick.AddListener(OnDestroyClicked);
         buttonNothing.GetComponent<Button>().onClick.AddListener(OnNothingClicked);
+    }
+
+    void Awake()
+    {
+        playerUi = FindFirstObjectByType<PlayerUI>();
     }
 
     // Called when player interacts with an object
@@ -53,6 +60,12 @@ public class DialogueManager : MonoBehaviour
     {
         interactableObject.ChangeVariant();
         interactableObject.CurrentState = PointsSystem.ObjectState.Changed;
+        interactableObject.isInteractable = false;
+
+        if (playerUi)
+        {
+            playerUi.showInteract = false;
+        }
         HideDialogue();
     }
 
@@ -60,6 +73,12 @@ public class DialogueManager : MonoBehaviour
     {
         interactableObject.DestroyVariant();
         interactableObject.CurrentState = PointsSystem.ObjectState.Destroyed;
+        interactableObject.isInteractable = false;
+
+        if (playerUi)
+        {
+            playerUi.showInteract = false;
+        }
         HideDialogue();
     }
 
