@@ -16,6 +16,7 @@ public class TaskMenu : MonoBehaviour
     [NonSerialized]
     public string selectedTask = "";
     public Action onTaskSelected;
+    public bool isReadOnly = false;
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class TaskMenu : MonoBehaviour
         }
         confirmButton.GetComponentInChildren<TextMeshProUGUI>().text = "Confirm";
         confirmButton.onClick.AddListener(OnConfirm);
+        confirmButton.gameObject.SetActive(!isReadOnly);
         UpdateButtons();
     }
 
@@ -89,12 +91,13 @@ public class TaskMenu : MonoBehaviour
                     imageComponent.color = Color.white;
                 }
             }
+            taskButtons[i].interactable = !isReadOnly;
         }
+        confirmButton.interactable = !isReadOnly;
     }
 
     void OnTaskButtonClicked(int index)
     {
-        Debug.Log("Clicked on Task Button " + index);
         string task = pointsSystem.availableTasks[index];
         if (selectedTask == task)
         {
@@ -109,7 +112,6 @@ public class TaskMenu : MonoBehaviour
 
     void OnConfirm()
     {
-        Debug.Log("Clicked on Confirm");
         if (!string.IsNullOrEmpty(selectedTask))
         {
             onTaskSelected?.Invoke();
