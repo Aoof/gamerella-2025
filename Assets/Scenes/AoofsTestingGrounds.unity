@@ -2732,7 +2732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1899752028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3248,6 +3248,10 @@ PrefabInstance:
       value: InteractableCollider
       objectReference: {fileID: 0}
     - target: {fileID: 5648206715026575306, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+      propertyPath: baseOptions
+      value: 
+      objectReference: {fileID: 11400000, guid: 58d8ba802a9e9074b999b32f444f96c3, type: 2}
+    - target: {fileID: 5648206715026575306, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
       propertyPath: baseVariant
       value: 
       objectReference: {fileID: 1432682161}
@@ -3363,6 +3367,9 @@ PrefabInstance:
     - {fileID: 608084834855428135, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
     - {fileID: 1065393973736455625, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
     - {fileID: 3229845966149412718, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+    - {fileID: 8856860756102808226, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+    - {fileID: 8560320626570949489, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
+    - {fileID: 1023593179262196179, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2762560681492189940, guid: 6988d21b0d28b4348858dfd816d3ea3f, type: 3}
     m_AddedGameObjects:

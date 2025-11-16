@@ -9,6 +9,10 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private GameObject baseVariant;
     [SerializeField] private GameObject destroyedVariant;
     [SerializeField] private GameObject[] changedVariants;
+    [Header("Dialogue Options")]
+    [SerializeField] private DialogueOptions baseOptions;
+    [SerializeField] private DialogueOptions destroyedOptions;
+    [SerializeField] private DialogueOptions[] changedOptions;
     [Header("References")]
     public PointsSystem pointsSystem;
     public DialogueManager dialogueManager;
@@ -48,6 +52,15 @@ public class InteractableObject : MonoBehaviour
         if (currentVariant != null) currentVariant.SetActive(true);
         // Update interactable
         isInteractable = currentVariant != destroyedVariant;
+    }
+
+    public DialogueOptions GetCurrentOptions()
+    {
+        if (currentVariant == baseVariant) return baseOptions;
+        if (currentVariant == destroyedVariant) return destroyedOptions;
+        int index = System.Array.IndexOf(changedVariants, currentVariant);
+        if (index >= 0 && index < changedOptions.Length) return changedOptions[index];
+        return null;
     }
 
     public void ChangeVariant()

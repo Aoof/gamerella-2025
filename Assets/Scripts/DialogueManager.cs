@@ -13,10 +13,6 @@ public class DialogueManager : MonoBehaviour
     public string dialogueTask;
     
     [NonSerialized]
-    public string textChange;
-    [NonSerialized]
-    public string textDestroy;
-    [NonSerialized]
     public string textNothing = "Back";
     
     [Header("UI Elements")]
@@ -37,8 +33,12 @@ public class DialogueManager : MonoBehaviour
     {
         UIManager ui = FindFirstObjectByType<UIManager>();
         ui.ShowDialogue();
-        buttonChange.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textChange;
-        buttonDestroy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textDestroy;
+        DialogueOptions options = interactableObject.GetCurrentOptions();
+        if (options != null)
+        {
+            buttonChange.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = options.changeString;
+            buttonDestroy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = options.destroyString;
+        }
         buttonNothing.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textNothing;
     }
 
