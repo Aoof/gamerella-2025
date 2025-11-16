@@ -11,6 +11,8 @@ public class TaskMenu : MonoBehaviour
     [SerializeField] private Button[] taskButtons;
     [SerializeField] private Button confirmButton;
 
+    float maxButtonWidth;
+
     [NonSerialized]
     public string selectedTask = "";
     public Action onTaskSelected;
@@ -28,6 +30,7 @@ public class TaskMenu : MonoBehaviour
             Debug.LogError("Task buttons not assigned!");
             return;
         }
+        maxButtonWidth = taskButtons[0].GetComponent<RectTransform>().sizeDelta.x;
         // Setup task buttons
         for (int i = 0; i < taskButtons.Length && i < pointsSystem.availableTasks.Count; i++)
         {
@@ -38,6 +41,12 @@ public class TaskMenu : MonoBehaviour
                 textComponent.text = pointsSystem.availableTasks[i];
             }
             taskButtons[i].onClick.AddListener(() => OnTaskButtonClicked(index));
+            ResizeButton(taskButtons[i].gameObject);
+        }
+        // Disable unused task buttons
+        for (int i = pointsSystem.availableTasks.Count; i < taskButtons.Length; i++)
+        {
+            taskButtons[i].gameObject.SetActive(false);
         }
         confirmButton.GetComponentInChildren<TextMeshProUGUI>().text = "Confirm";
         confirmButton.onClick.AddListener(OnConfirm);
@@ -48,6 +57,20 @@ public class TaskMenu : MonoBehaviour
     {
         selectedTask = "";
         UpdateButtons();
+    }
+
+    private void ResizeButton(GameObject button)
+    {
+        var textComp = button.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        if (textComp != null)
+        {
+            var textRect = textComp.GetComponent<RectTransform>();
+            textRect.sizeDelta = new Vector2(maxButtonWidth, textRect.sizeDelta.y);
+            textComp.textWrappingMode = TMPro.TextWrappingModes.Normal;
+            textComp.ForceMeshUpdate();
+            var buttonRect = button.GetComponent<RectTransform>();
+            buttonRect.sizeDelta = new Vector2(buttonRect.sizeDelta.x, textComp.preferredHeight);
+        }
     }
 
     void UpdateButtons()

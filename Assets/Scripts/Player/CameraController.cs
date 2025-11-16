@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     public void Start()
     {
         orientation.rotation = transform.rotation;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void OnEnable()
@@ -26,6 +27,7 @@ public class CameraController : MonoBehaviour
 
     public void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Locked) return;
         Vector2 lookDelta = lookAction.ReadValue<Vector2>();
 
         rotation.x += lookDelta.x * sensitivity.x * Time.deltaTime;
