@@ -38,6 +38,11 @@ public class InteractableObject : MonoBehaviour
         get { return currentState; }
     }
 
+    public void ResetState()
+    {
+        currentState = PointsSystem.ObjectState.Unchanged;
+    }
+
     void Awake()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
@@ -77,7 +82,7 @@ public class InteractableObject : MonoBehaviour
         {
             currentVariant = changedVariants[index + 1];
             UpdateVariants();
-        } else if (currentState == PointsSystem.ObjectState.Unchanged)
+        } else if (currentState == PointsSystem.ObjectState.Unchanged && currentVariant != destroyedVariant)
         {
             currentVariant = changedVariants[0];
             UpdateVariants();
