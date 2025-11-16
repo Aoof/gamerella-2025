@@ -7,4 +7,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1); // Load Day 1
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
