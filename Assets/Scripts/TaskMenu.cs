@@ -18,10 +18,12 @@ public class TaskMenu : MonoBehaviour
     [NonSerialized]
     public string selectedTask = "";
     public Action onTaskSelected;
-    public bool isReadOnly = false;
+    public static bool isReadOnly = false;
 
-    void Start()
+    void Awake()
     {
+        if (playerInteractions == null) playerInteractions = FindFirstObjectByType<PlayerInteractions>();
+
         pointsSystem = FindFirstObjectByType<PointsSystem>();
         if (pointsSystem == null)
         {
@@ -54,11 +56,6 @@ public class TaskMenu : MonoBehaviour
         confirmButton.GetComponentInChildren<TextMeshProUGUI>().text = "Confirm";
         confirmButton.onClick.AddListener(OnConfirm);
         UpdateButtons();
-    }
-
-    void Awake()
-    {
-        if (playerInteractions == null) playerInteractions = FindFirstObjectByType<PlayerInteractions>();
     }
 
     void OnEnable()
@@ -139,6 +136,7 @@ public class TaskMenu : MonoBehaviour
         UIManager.instance.ShowTaskMenu();
         selectedTask = "";
         isReadOnly = readOnly;
+        UpdateButtons();
     }
 
 }

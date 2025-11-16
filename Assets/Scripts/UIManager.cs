@@ -29,10 +29,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-    }
 
-    void Start()
-    {
         // Ensure playerUi is always active
         if (playerUi != null) playerUi.SetActive(true);
         // Find UI references if not assigned
@@ -51,13 +48,12 @@ public class UIManager : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         lookAction = InputSystem.actions.FindAction("Look");
         escapeAction = InputSystem.actions.FindAction("Escape");
-        HideAll();
     }
 
     public void ShowTaskMenu()
     {
         HideAll();
-        taskManager.isReadOnly = false;
+        TaskMenu.isReadOnly = false;
         if (taskMenu != null) taskMenu.SetActive(true);
         isInUI = true;
         UnlockMouse();
@@ -69,7 +65,7 @@ public class UIManager : MonoBehaviour
         if (taskManager != null)
         {
             taskMenu.SetActive(true);
-            taskManager.isReadOnly = true;
+            TaskMenu.isReadOnly = true;
             taskManager.UpdateButtons();
         }
         isInUI = true;
@@ -90,6 +86,7 @@ public class UIManager : MonoBehaviour
 
     public void StartDaySequence(int dayNumber)
     {
+        UnlockMouse();
         StartCoroutine(DaySequenceCoroutine(dayNumber));
     }
 
@@ -108,7 +105,7 @@ public class UIManager : MonoBehaviour
             }
             yield return null;
         }
-        if (taskMenu.activeSelf && taskManager.isReadOnly)
+        if (taskMenu.activeSelf && TaskMenu.isReadOnly)
         {
             HideAll();
         }

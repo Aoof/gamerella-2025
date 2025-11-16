@@ -19,8 +19,6 @@ public class JudgementCanvas : MonoBehaviour
     {
         UIManager.instance.ShowJudgement();
         partnerText.text = pointsSystem.GetJudgementText();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         StartCoroutine(WaitAndNextDay());
     }
 
