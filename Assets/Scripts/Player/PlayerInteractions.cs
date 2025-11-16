@@ -17,12 +17,10 @@ public class PlayerInteractions : MonoBehaviour
 
     void OnEnable()
     {
-        interactAction.Enable();
     }
 
     void OnDisable()
     {
-        interactAction.Disable();
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,11 +56,23 @@ public class PlayerInteractions : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.instance != null && UIManager.instance.isInUI) return;
+
         if (interactAction.WasPressedThisFrame() && interactAction.IsPressed())
         {
             if (latestInteractable != null)
             {
-                // Use latestInteractable (The Interactable Object)
+                // Show task menu first
+                TaskMenu tm = FindFirstObjectByType<TaskMenu>();
+                UIManager ui = FindFirstObjectByType<UIManager>();
+                tm.onTaskSelected = () =>
+                {
+                    DialogueManager dm = FindFirstObjectByType<DialogueManager>();
+                    dm.interactableObject = latestInteractable;
+                    dm.dialogueTask = tm.selectedTask;
+                    ui.ShowDialogue();
+                };
+                ui.ShowTaskMenu();
             }
         }
     }

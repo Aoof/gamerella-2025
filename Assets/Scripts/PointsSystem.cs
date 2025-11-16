@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PointsSystem : MonoBehaviour
@@ -26,11 +25,13 @@ public class PointsSystem : MonoBehaviour
 
     public List<DayHistory> stateHistory = new();
 
-    //public Dictionary<int, Dictionary<string, ObjectState>> stateHistory = new();
-    //public List<Dictionary<string, Tuple<string, ObjectState>>> stateHistory = new();
+    [Header("Game State")]
     public int currentDay = 0;
-    public int tasksQuantity;
-    public int tasksDone;
+    public int tasksQuantity = 3;
+    public int currentActions = 0;
+
+    [Header("Tasks")]
+    public List<string> availableTasks = new() { "Clean the apartment", "Fix the laptop", "Organize the fridge", "Change the boot", "Destroy condoms" };
 
     public GameObject[] interactables;
 
@@ -39,12 +40,22 @@ public class PointsSystem : MonoBehaviour
         interactables = GameObject.FindGameObjectsWithTag("Interactable");
     }
 
-    // Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
     void Start()
     {
-        DayHistory dh = new();
-        dh.Day = new List<ActionStruct>();
+        stateHistory.Add(new DayHistory { Day = new List<ActionStruct>() });
+        currentDay = 0;
+        currentActions = 0;
+    }
 
-        stateHistory.Add(dh);
+    public void ActionPerformed()
+    {
+        currentActions++;
+        if (currentActions >= tasksQuantity)
+        {
+            // End day, start new day
+            stateHistory.Add(new DayHistory { Day = new List<ActionStruct>() });
+            currentDay++;
+            currentActions = 0;
+        }
     }
 }

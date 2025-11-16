@@ -1375,11 +1375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   interactableObject: {fileID: 0}
-  dialogueTitle: 
-  dialogueTask: 
-  textChange: 
-  textDiscard: 
-  textNothing: 
   buttonChange: {fileID: 406222824}
   buttonDiscard: {fileID: 416662000}
   buttonNothing: {fileID: 1086914356}

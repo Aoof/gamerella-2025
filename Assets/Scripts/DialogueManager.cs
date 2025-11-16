@@ -1,38 +1,70 @@
 using System;
-using System.Collections.Generic;
-using TMPro;
-using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [NonSerialized]
     public InteractableObject interactableObject; // The object the player is interacting with
+
+    [NonSerialized]
     public string dialogueTitle; // The name of the object
+    [NonSerialized]
     public string dialogueTask;
     
+    [NonSerialized]
     public string textChange;
-    public string textDiscard;
-    public string textNothing;
+    [NonSerialized]
+    public string textDestroy;
+    [NonSerialized]
+    public string textNothing = "Back";
     
-    public GameObject buttonChange;
-    public GameObject buttonDiscard;
-    public GameObject buttonNothing;
+    [Header("UI Elements")]
+    [SerializeField] private GameObject buttonChange;
+    [SerializeField] private GameObject buttonDestroy;
+    [SerializeField] private GameObject buttonNothing;
+
+    public GameObject dialoguePanel => buttonChange?.transform.parent.gameObject;
+    void Start()
+    {
+        buttonChange.GetComponent<Button>().onClick.AddListener(OnChangeClicked);
+        buttonDestroy.GetComponent<Button>().onClick.AddListener(OnDestroyClicked);
+        buttonNothing.GetComponent<Button>().onClick.AddListener(OnNothingClicked);
+    }
 
     // Called when player interacts with an object
     public void ShowDialogue()
     {
-        // Show ActionPanel
-        buttonChange.transform.parent.gameObject.SetActive(true);
+        UIManager ui = FindFirstObjectByType<UIManager>();
+        ui.ShowDialogue();
         buttonChange.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textChange;
-        buttonDiscard.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textDiscard;
+        buttonDestroy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textDestroy;
         buttonNothing.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textNothing;
     }
 
 
     public void HideDialogue()
     {
-        // Hide ActionPanel
-        buttonChange.transform.parent.gameObject.SetActive(false);
+        UIManager ui = FindFirstObjectByType<UIManager>();
+        ui.HideAll();
+    }
+
+    public void OnChangeClicked()
+    {
+        interactableObject.ChangeVariant();
+        interactableObject.CurrentState = PointsSystem.ObjectState.Changed;
+        HideDialogue();
+    }
+
+    public void OnDestroyClicked()
+    {
+        interactableObject.DestroyVariant();
+        interactableObject.CurrentState = PointsSystem.ObjectState.Destroyed;
+        HideDialogue();
+    }
+
+    public void OnNothingClicked()
+    {
+        HideDialogue();
     }
 }
