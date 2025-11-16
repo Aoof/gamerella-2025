@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   isInteractable: 1
+  isSelected: 0
+  highlightSphere: {fileID: 7080310022349818498}
   currentVariant: {fileID: 969996337495476360}
   baseVariant: {fileID: 969996337495476360}
   destroyedVariant: {fileID: 8452855569309000015}
