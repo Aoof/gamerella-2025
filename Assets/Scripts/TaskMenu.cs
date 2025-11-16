@@ -7,9 +7,11 @@ public class TaskMenu : MonoBehaviour
 {
     [Header("References")]
     public PointsSystem pointsSystem;
+    public PlayerInteractions playerInteractions;
     [Header("UI Elements")]
     [SerializeField] private Button[] taskButtons;
     [SerializeField] private Button confirmButton;
+    [SerializeField] private TextMeshProUGUI objectTitle;
 
     float maxButtonWidth;
 
@@ -55,10 +57,18 @@ public class TaskMenu : MonoBehaviour
         UpdateButtons();
     }
 
+    void Awake()
+    {
+        if (playerInteractions == null) playerInteractions = FindFirstObjectByType<PlayerInteractions>();
+    }
+
     void OnEnable()
     {
         selectedTask = "";
         UpdateButtons();
+        
+        // Update ObjectTitle
+        objectTitle.text = playerInteractions.latestInteractable.gameObject.name;
     }
 
     private void ResizeButton(GameObject button)
