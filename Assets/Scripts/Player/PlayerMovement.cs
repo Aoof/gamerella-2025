@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public Transform orientation;
-    Vector2 movement;
+    public Vector2 Movement;
     InputAction moveAction;
     Vector3 moveDirection;
     Rigidbody rb;
@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement = moveAction.ReadValue<Vector2>();
+        Movement = moveAction.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
     {
-        moveDirection = Quaternion.Euler(0, orientation.eulerAngles.y, 0) * new Vector3(movement.x, 0, movement.y);
+        moveDirection = Quaternion.Euler(0, orientation.eulerAngles.y, 0) * new Vector3(Movement.x, 0, Movement.y);
 
         Vector3 targetVelocity = Vector3.zero;
         if (moveDirection != Vector3.zero)
